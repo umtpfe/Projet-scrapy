@@ -1,0 +1,15 @@
+1 scrapy shell 'http://quotes.toscrape.com'
+2 response.css("div.quote")
+3 quote = response.css("div.quote")[0]
+4 title = quote.css("span.text::text").get()
+-title
+5 author = quote.css("small.author::text").get()
+-author
+6 tags = quote.css("div.tags a.tag::text").getall()
+-tags
+7 pour faire tout les code en même temps
+-for quote in response.css("div.quote"):
+	-text = quote.css("span.text::text").get()
+	-author = quote.css("small.author::text").get()
+	-tags = quote.css("div.tags a.tag::text").getall()
+	-print(dict(text=text, author=author, tags=tags))
